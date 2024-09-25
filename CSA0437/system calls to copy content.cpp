@@ -18,9 +18,10 @@ int main() {
     }
 
     // Open the destination file for writing (create if not exists, truncate to 0 if exists)
+    destinationFile = open("destination.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
     if (destinationFile == -1) {
         perror("Error opening destination file");
-        close(sourceFile);
+        close(sourceFile); // Close the source file before exiting
         exit(EXIT_FAILURE);
     }
 
@@ -50,4 +51,3 @@ int main() {
 
     return 0;
 }
-
